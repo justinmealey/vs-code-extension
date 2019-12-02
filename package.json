@@ -228,12 +228,8 @@
     "@types/node": "^6.0.40",
     "mocha": "^3.3.0",
     "typescript": "^2.3.2",
-    "vscode": "^1.1.0"
-  },
-  "dependencies": {
-    "glob": "^7.1.2",
-    "ramda": "^0.23.0",
-    "vscode-nls": "^2.0.2"
+    "vscode": "^1.1.0",
+    "vscode-nls": "^4.1.1"
   },
   "dependencies": {
     "ramda": "^0.23.0"

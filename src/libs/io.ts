@@ -45,3 +45,7 @@ export function writeFile(outPath: string, output: string) {
   return fs.writeFileSync(outPath, output);
 }
 
+export function overwriteFile(outPath: string, output: string) {
+  fs.unlinkSync(outPath);
+  return fs.writeFileSync(outPath, output);
+}

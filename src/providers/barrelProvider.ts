@@ -115,16 +115,23 @@ export class BarrelProvider {
     const fileExists = io.exists(barrelPath);
 
     if (fileExists) {
-      throw new Error(`${barrelName} already exists at this location.`);
-    }
-
-    return await this.getArtifacts(srcPath, barrelType)
+      return await this.getArtifacts(srcPath, barrelType)
       .then(artifacts => {
         const body = this.createBody(artifacts, config);
-        io.writeFile(barrelPath, body);
+        io.overwriteFile(barrelPath, body);
         return true;
       })
       .catch((err: Error) => { throw err });
+    }
+    else {
+      return await this.getArtifacts(srcPath, barrelType)
+        .then(artifacts => {
+          const body = this.createBody(artifacts, config);
+          io.writeFile(barrelPath, body);
+          return true;
+        })
+        .catch((err: Error) => { throw err });
+      }
   }
 
   async getArtifacts(srcPath: string, barrelType: BarrelType): Promise<SimpleIOResult[]> {
